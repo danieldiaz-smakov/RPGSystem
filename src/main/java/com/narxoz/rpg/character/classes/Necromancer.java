@@ -1,4 +1,4 @@
-package com.narxoz.rpg.character.class;
+package com.narxoz.rpg.character.classes;
 
 import com.narxoz.rpg.character.archetype.Mage;
 

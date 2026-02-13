@@ -1,7 +1,7 @@
 package com.narxoz.rpg.factory.character;
 
 import com.narxoz.rpg.character.Character;
-import com.narxoz.rpg.character.class.BowMan;
+import com.narxoz.rpg.character.classes.BowMan;
 
 public class BowManCreator extends CharacterCreator {
     @Override

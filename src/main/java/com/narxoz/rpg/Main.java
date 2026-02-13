@@ -1,65 +1,43 @@
 package com.narxoz.rpg;
 
-/**
- * Main demonstration class for the RPG Character & Equipment System.
- *
- * Your task: Demonstrate both Factory Method and Abstract Factory patterns working together.
- *
- * This file should showcase:
- * 1. Creating different character types using Factory Method pattern
- * 2. Equipping characters with themed equipment using Abstract Factory pattern
- * 3. Displaying character stats and equipment details
- *
- * Expected output flow:
- * - Create 3+ different characters
- * - Equip each with different themed equipment sets
- * - Show that the system is extensible and maintainable
- */
+import com.narxoz.rpg.character.Character;
+import com.narxoz.rpg.factory.character.*;
+import com.narxoz.rpg.factory.equipment.*;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("=== RPG Character & Equipment System ===\n");
+        System.out.println("=== RPG Character & Equipment Demo ===\n");
 
-        // TODO: Demonstrate Factory Method Pattern
-        // Create different character types (Warrior, Mage, Archer, etc.)
-        // Think: How can you create characters without using if-else chains?
-        // Think: What class/interface should handle character creation?
+        var paladinCreator = new PaladinCreator();
+        var necroCreator = new NecromancerCreator();
+        var bowmanCreator = new BowManCreator();
 
+        var medieval = new MedievalEquipmentFactory();
+        var magic = new MagicEquipmentFactory();
+        var ranger = new RangerEquipmentFactory();
 
-        // TODO: Demonstrate Abstract Factory Pattern
-        // Create equipment sets (Medieval, Magic, Ranger, etc.)
-        // Think: How do you ensure weapons and armor from same theme are created together?
-        // Think: What guarantees a Medieval sword comes with Medieval armor?
+        // 1) разные типы персонажей
+        var paladin = paladinCreator.create("Uther", medieval);
+        printCharacter(paladin, medieval.getThemeName());
 
+        var necro = necroCreator.create("Morbias", magic);
+        printCharacter(necro, magic.getThemeName());
 
-        // TODO: Show character stats
-        // Display each character's attributes (health, mana, strength, intelligence)
-        // Show their special abilities
+        var bowman = bowmanCreator.create("Robin", ranger);
+        printCharacter(bowman, ranger.getThemeName());
 
-
-        // TODO: Equip characters with different themed sets
-        // Warrior with Medieval equipment
-        // Mage with Magic equipment
-        // Archer with Ranger equipment
-        // etc.
-
-
-        // TODO: Display equipped items
-        // Show weapon details (damage, special properties)
-        // Show armor details (defense, special properties)
-
-
-        // TODO: (Optional) Demonstrate extensibility
-        // In comments, explain how easy it would be to:
-        // - Add a new character class (e.g., Rogue, Paladin)
-        // - Add a new equipment theme (e.g., Dragon Slayer, Undead)
-
-
-        System.out.println("\n=== Demo Complete ===");
+        // 2) один и тот же тип персонажа с другой темой (демонстрация гибкости)
+        var paladinAlt = paladinCreator.create("Uther (Alt Theme)", magic);
+        printCharacter(paladinAlt, magic.getThemeName());
     }
 
-    // TODO: Add helper methods as needed
-    // Consider methods like:
-    // - createAndDisplayCharacter(...)
-    // - equipCharacter(...)
-    // - displayCharacterInfo(...)
+    private static void printCharacter(Character c, String theme) {
+        System.out.println("----------------------------------");
+        System.out.println("Theme: " + theme);
+        System.out.println(c.getStats());
+        System.out.println("Weapon: " + (c.getWeapon() == null ? "None" : c.getWeapon().getWeaponInfo()));
+        System.out.println("Armor: " + (c.getArmor() == null ? "None" : c.getArmor().getArmorInfo()));
+        System.out.println("Ability: " + c.useSpecialAbility());
+        System.out.println();
+    }
 }

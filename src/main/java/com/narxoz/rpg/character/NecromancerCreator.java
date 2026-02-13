@@ -1,7 +1,7 @@
 package com.narxoz.rpg.factory.character;
 
 import com.narxoz.rpg.character.Character;
-import com.narxoz.rpg.character.class.Necromancer;
+import com.narxoz.rpg.character.classes.Necromancer;
 
 public class NecromancerCreator extends CharacterCreator {
     @Override

@@ -1,3 +1,5 @@
+package com.narxoz.rpg.equipment.themes.medieval;
+
 import com.narxoz.rpg.equipment.Weapon;
 import com.narxoz.rpg.equipment.WeaponType;
 
