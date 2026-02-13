@@ -1,30 +1,51 @@
 package com.narxoz.rpg.character;
 
-/**
- * Base interface for all character types in the RPG system.
- *
- * TODO: Decide if this should be an interface or abstract class
- * Think: What's common to ALL characters?
- * Think: What varies between character types?
- *
- * Factory Method Pattern:
- * This represents the "Product" in the Factory Method pattern.
- * Different character classes (Warrior, Mage, Archer) are concrete products.
- */
-public interface Character {
+import com.narxoz.rpg.equipment.Armor;
+import com.narxoz.rpg.equipment.Weapon;
 
-    // TODO: Define common character behaviors
-    // Consider methods like:
-    // - String getName()
-    // - int getHealth()
-    // - int getMana()
-    // - int getStrength()
-    // - int getIntelligence()
-    // - void displayStats()
-    // - void useSpecialAbility()
+public abstract class Character {
+    protected String name;
 
-    // TODO: Think about equipment
-    // Should characters know about their equipped items?
-    // How will you handle equipping weapons and armor?
+    protected int health;
+    protected int mana;
+    protected int strength;
+    protected int intelligence;
+    protected int dexterity;
 
+    protected Weapon weapon;
+    protected Armor armor;
+
+    protected Character(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getTotalDamage() {
+        return weapon == null ? 0 : weapon.getDamage();
+    }
+
+    public int getTotalDefense() {
+        return armor == null ? 0 : armor.getDefense();
+    }
+
+    public void equip(Weapon weapon, Armor armor) {
+        this.weapon = weapon;
+        this.armor = armor;
+    }
+
+    public String getStats() {
+        return ""
+                + "Name: " + name + "\n"
+                + "Class: " + getClassName() + " (" + getArchetypeName() + ")\n"
+                + "HP: " + health + ", Mana: " + mana + "\n"
+                + "STR: " + strength + ", INT: " + intelligence + ", DEX: " + dexterity + "\n"
+                + "DMG: " + getTotalDamage() + ", DEF: " + getTotalDefense();
+    }
+
+    public abstract String getClassName();
+    public abstract String getArchetypeName();
+    public abstract String useSpecialAbility();
 }
