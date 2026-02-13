@@ -31,6 +31,10 @@ public abstract class Character {
         return armor == null ? 0 : armor.getDefense();
     }
 
+    public Weapon getWeapon() { return weapon; }
+
+    public Armor getArmor() { return armor; }
+
     public void equip(Weapon weapon, Armor armor) {
         this.weapon = weapon;
         this.armor = armor;
