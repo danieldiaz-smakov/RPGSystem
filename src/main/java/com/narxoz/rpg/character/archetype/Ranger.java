@@ -1,4 +1,4 @@
-package com.narxoz.rpg.character;
+package com.narxoz.rpg.character.archetype;
 
 public abstract class Ranger extends Character {
     protected Ranger(String name) {

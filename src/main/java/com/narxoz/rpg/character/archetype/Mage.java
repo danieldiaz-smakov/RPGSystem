@@ -1,4 +1,4 @@
-package com.narxoz.rpg.character;
+package com.narxoz.rpg.character.archetype;
 
 public abstract class Mage extends Character {
     protected Mage(String name) {
