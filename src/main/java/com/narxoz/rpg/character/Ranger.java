@@ -1,12 +1,12 @@
 package com.narxoz.rpg.character;
 
-public abstract class Warrior extends Character {
-    protected Warrior(String name) {
+public abstract class Ranger extends Character {
+    protected Ranger(String name) {
         super(name);
     }
 
     @Override
     public String getArchetypeName() {
-        return "Warrior";
+        return "Ranger";
     }
 }
